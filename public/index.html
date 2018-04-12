@@ -1,0 +1,46 @@
+<!DOCTYPE>
+<html ng-app="app">
+    <head>
+       
+        <title>
+            MEAN Stack Application
+        </title>
+    </head>
+    <body>
+        <div class="container" ng-controller="appCtrl as ctrl">
+            <h1>MEAN Stack Application</h1>
+            <table class="table" border="1">
+                <thead>
+                    <tr>
+                        <th ng-repeat="field in ctrl.fields">
+                            {{field.label}}
+                        </th>
+                        <th>
+                        </th>
+                    </tr>
+                </thead>
+                <tr>{{ctrl.contact}}
+                    <td ng-repeat="field in ctrl.fields">
+                        <input ng-model="ctrl.user[field.key]" class="form-control" placeholder="{{field.label}}"/>
+                    </td>
+                    <td>
+                        <button ng-click="ctrl.saveUser()">Save</button>
+                        <button ng-click="ctrl.cancelEdit()">Cancel</button>
+                    </td>
+                </tr>
+                <tr ng-repeat = "user in ctrl.users">
+                    <td ng-repeat="field in ctrl.fields">
+                        {{user[field.key]}}
+                    </td>
+                    <td>
+                        <button ng-click="ctrl.editUser(user)">Edit</button>
+                        <button ng-click="ctrl.deleteUser(user._id)">Delete</button>
+                    </td>
+                </tr>
+            </table>      
+        </div>
+        <script src="https://code.jquery.com/jquery-2.2.4.min.js"   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+        <script src="app.js"></script>
+    </body>
+</html>
